@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App theme-light">
       <div className="content">
-        <h1>Test</h1>
+        Sample title
       </div>
     </div>
   );
