@@ -1,0 +1,8 @@
+@use "../css/theme" as theme;
+@use "reset";
+
+.content {
+  @include theme.themed("background-color", "themeColorBackground");
+  @include theme.themed("color", "themeColorText");
+  @include theme.themed("border", "themeColorPrimary");
+}

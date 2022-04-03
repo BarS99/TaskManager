@@ -1,0 +1,30 @@
+@use "sass:map";
+
+$themes: (
+  "light": (
+    themeColorPrimary: hsl(92, 55%, 10%),
+    themeColorSecondary: hsl(250, 28%, 10%),
+    themeColorText: hsl(0, 0%, 0%),
+    themeColorBackground: hsl(0, 0%, 100%),
+  ),
+  "dark": (
+    themeColorPrimary: hsl(92, 55%, 55%),
+    themeColorSecondary: hsl(250, 28%, 36%),
+    themeColorText: hsl(0, 0%, 100%),
+    themeColorBackground: hsl(0, 0%, 20%),
+  ),
+);
+
+@mixin themed($property: null, $theme-key: null, $before: null, $after: null) {
+  @if $property != null and $theme-key != null {
+    @each $theme, $map in $themes {
+      .theme-#{$theme} & {
+        #{$property}: #{$before} getThemeValue($map, $theme-key) #{$after};
+      }
+    }
+  }
+}
+
+@function getThemeValue($map, $property) {
+  @return map-get($map, $property);
+}
